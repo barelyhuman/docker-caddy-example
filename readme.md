@@ -13,7 +13,7 @@ There's numerous ways to self host and I keep trying ways to make sure I can man
 ### Setup network
 
 ```sh
-; docker create network caddy_network # create a shareable network
+; docker network create caddy_network # create a shareable network
 ```
 
 We create a docker shared network for all the services to talk to each other on. This allows us to configure the `Caddyfile` in a way that allows using service names with unpublished ports without worrying about filling up the ports on the system.
