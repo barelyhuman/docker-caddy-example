@@ -1,10 +1,10 @@
-goblin.run {
+localhost {
     reverse_proxy goblin:3000
 }
 
-:80 {
-    handle_path /personal* {
-		root * /sites/personal
-		file_server
-	}
+# example sub domain to host static sites
+# sites from sites/personal
+personal.localhost {
+	root * /sites/personal
+	file_server
 }
