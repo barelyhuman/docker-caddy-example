@@ -1,0 +1,44 @@
+#!/usr/bin/env bash 
+
+start(){
+    filename="docker-compose.yml"
+    if [ ! -z $1 ]; then
+        filename="docker-compose.$1.yml"
+    fi;
+    docker compose -f $filename up -d
+}
+
+stop(){
+    filename="docker-compose.yml"
+    if [ ! -z $1 ]; then
+        filename="docker-compose.$1.yml"
+    fi;
+    docker compose -f $filename down
+}
+
+update(){
+    filename="docker-compose.yml"
+    
+    if [ ! -z "$1" ]; then
+        filename="docker-compose.$1.yml"
+    fi;
+    docker compose -f $filename pull
+}
+
+restart(){
+    filename="docker-compose.yml"
+    if [ ! -z $1 ]; then
+        filename="docker-compose.$1.yml"
+    fi;
+    docker compose up -f $filename -d
+}
+
+
+COMMAND=$1;shift
+case "$COMMAND" in
+  start)  start "$@" ;;
+  update)  update "$@" ;;
+  stop)     stop "$@" ;;
+  restart)    restart "$@" ;;
+  *)             _err "unrecognized command: $COMMAND" ;;
+esac
