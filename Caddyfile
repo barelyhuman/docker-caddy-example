@@ -1,3 +1,8 @@
+{
+    ## for certification generation
+    email example@example.com
+}
+
 localhost {
     reverse_proxy goblin:3000
 }
@@ -5,6 +10,6 @@ localhost {
 # example sub domain to host static sites
 # sites from sites/personal
 personal.localhost {
-	root * /sites/personal
-	file_server
+    root * /sites/personal
+    file_server
 }
