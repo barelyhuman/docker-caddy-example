@@ -1,5 +1,17 @@
 #!/usr/bin/env bash 
 
+
+# Usage 
+# 
+# ./manage start => start the main `docker-compose.yml` caddy
+# ./manage start goblin => run `docker-compose.goblin.yml`
+# ./manage stop => stop `docker-compose.goblin.yml`
+# ./manage stop goblin => stop `docker-compose.goblin.yml`
+# ./manage update => pull updated images for `docker-compose.yml`
+# ./manage update goblin => pull updated images `docker-compose.goblin.yml`
+# ./manage restart => restart `docker-compose.goblin.yml`
+# ./manage restart goblin => restart `docker-compose.goblin.yml`
+
 start(){
     filename="docker-compose.yml"
     if [ ! -z $1 ]; then
