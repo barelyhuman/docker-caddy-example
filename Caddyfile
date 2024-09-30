@@ -1,3 +1,10 @@
-localhost:80, goblin.run {
+goblin.run {
     reverse_proxy goblin:3000
+}
+
+:80 {
+    handle_path /personal* {
+		root * /sites/personal
+		file_server
+	}
 }

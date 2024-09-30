@@ -12,6 +12,7 @@ services:
     volumes:
       - caddy:/data
       - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./sites:/sites
 
 volumes:
   caddy:
