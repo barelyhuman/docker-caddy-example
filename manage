@@ -12,12 +12,24 @@
 # ./manage restart => restart `docker-compose.goblin.yml`
 # ./manage restart goblin => restart `docker-compose.goblin.yml`
 
+boot_all(){
+    start
+    for file in $(ls docker-compose.*.yml);
+    do
+        up_file $file
+    done
+}
+
+up_file(){
+    docker compose -f $1 up -d
+}
+
 start(){
     filename="docker-compose.yml"
     if [ ! -z $1 ]; then
         filename="docker-compose.$1.yml"
     fi;
-    docker compose -f $filename up -d
+    up_file $filename
 }
 
 stop(){
@@ -48,6 +60,7 @@ restart(){
 
 COMMAND=$1;shift
 case "$COMMAND" in
+  boot) boot_all "$@" ;;
   start)  start "$@" ;;
   update)  update "$@" ;;
   stop)     stop "$@" ;;
